@@ -1,0 +1,3 @@
+- create vite app
+- install & setup tailwind.css 
+
