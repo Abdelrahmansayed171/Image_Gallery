@@ -1,3 +1,4 @@
 - create vite app
 - install & setup tailwind.css 
-- 
+- make most basic image card in app.jsx ('https://source.unsplash.com/random')
+-  

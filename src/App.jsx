@@ -32,13 +32,14 @@ function App() {
               <span><strong>500</strong></span>
             </div>
           </div>
-          <div className="px-6 py-4">
-            <span>Hello</span>
-            <span>Hello</span>
-            <span>Hello</span>
+          <div className="px-2 py-3">
+            <span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1' >#Nature</span>
+            <span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1' >#Motivation</span>
+            <span className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-1' >#Speak</span>
           </div>
         </div>
       </div>
+      
     </>
   )
 }
