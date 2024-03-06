@@ -7,8 +7,11 @@ import downloads from './assets/downloads.png';
 import likes from './assets/likes.png';
 
 function App() {
+  [images, setImages] = useState([])
+  [query, setQuery] = useState('')
 
-  
+  fetch(`https://pixabay.com/api/?key=${process.env.PIXAPAY_API_KEY}&q=${query}yellow+flowers&image_type=photo`)
+
   return (
     <>
 
