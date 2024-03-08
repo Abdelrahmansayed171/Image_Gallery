@@ -2,3 +2,13 @@
 - install & setup tailwind.css 
 - make most basic image card in app.jsx ('https://source.unsplash.com/random')
 -  
+<div className='grid-cols-4 grid gap-5'>
+         {images.map((image)=>( 
+                <ImageCard key={image.id} image={image}/>
+        ))}
+      </div>
+
+      fetch(`https://pixabay.com/api/?key=${apiKey}&q=${query}&image_type=photo`)
+        .then((res) => res.json())
+        .then((data) => setImages(data.hits))
+        .catch((error) => console.error('Error fetching data:', error))

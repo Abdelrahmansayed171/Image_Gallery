@@ -1,4 +1,4 @@
-import { useEffect, useState, useTransition } from 'react'
+import { useEffect, useState, useTransition, Suspense } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -10,34 +10,25 @@ function App() {
   const [query, setQuery] = useState('')
   const apiKey = import.meta.env.VITE_PIXAPAY_API_KEY;
   
-  const [loading, startTransition] = useTransition()
+  const [isPending, startTransition] = useTransition()
 
   // useEffect with no dependencies will run only once at 1st Render
   useEffect( () => {
-    startTransition(() => {
-      setLoading(true)
-      setTimeout(()=>{
-        fetch(`https://pixabay.com/api/?key=${apiKey}&q=${query}&image_type=photo`)
+    fetch(`https://pixabay.com/api/?key=${apiKey}&q=${query}&image_type=photo`)
         .then((res) => res.json())
         .then((data) => setImages(data.hits))
         .catch((error) => console.error('Error fetching data:', error))
-      },2000)
-      
-      setLoading(false)
-    })}
+    }
     ,[])
 
 
   return (
     <div className='container mx-auto'>
       <div className='grid-cols-4 grid gap-5'>
-        { loading 
-            ? <h1>"Loading"</h1> 
-            : images.map((image)=>( 
+         {images.map((image)=>( 
                 <ImageCard key={image.id} image={image}/>
         ))}
       </div>
-        
     </div>
   )
 }
