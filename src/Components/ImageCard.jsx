@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import views from '../assets/views.png';
 import downloads from '../assets/downloads.png';
 import likes from '../assets/likes.png';
 
 const ImageCard = ({image}) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const tags = image.tags.split(', ')
   return (
     <div className='max-w-xs rounded overflow-hidden shadow-lg'>
-
-          <img src={image.webformatURL} alt='Random Image' className='w-full max-h-96' onLoad={console.log(`Image ${image.id} Loaded `)}/>
+          {
+            <img src={image.webformatURL} alt='Random Image' loading="lazy" className='w-full max-h-96 ' />
+          }
           <div className="px-6 py-4">
             <div className="font-bold text-purple-500 text-l mb-2">
                 Taken by {image.user}

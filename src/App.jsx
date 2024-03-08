@@ -16,7 +16,7 @@ function App() {
   useEffect( () => {
     fetch(`https://pixabay.com/api/?key=${apiKey}&q=${query}&image_type=photo`)
         .then((res) => res.json())
-        .then((data) => setImages(data.hits))
+        .then((data) => {console.log(data);setImages(data.hits)})
         .catch((error) => console.error('Error fetching data:', error))
     }
     ,[])
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <div className='container mx-auto'>
-      <div className='grid-cols-4 grid gap-5'>
+      <div className='grid-cols-3 grid gap-5'>
          {images.map((image)=>( 
                 <ImageCard key={image.id} image={image}/>
         ))}
