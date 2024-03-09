@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import ImageCard from './Components/ImageCard';
+import Search from './Components/Search';
 
 function App() {
   const [images, setImages] = useState([])
@@ -19,17 +20,21 @@ function App() {
         .then((data) => {console.log(data);setImages(data.hits)})
         .catch((error) => console.error('Error fetching data:', error))
     }
-    ,[])
+    ,[query])
 
 
   return (
-    <div className='container mx-auto'>
-      <div className='grid-cols-3 grid gap-5'>
-         {images.map((image)=>( 
-                <ImageCard key={image.id} image={image}/>
-        ))}
+    <>
+      <Search searchImage={(text) => setQuery(text)}/>
+      <div className='container mx-auto'>
+        <div className='grid-cols-4 grid gap-5 mt-10'>
+          {images.map((image)=>( 
+                  <ImageCard key={image.id} image={image}/>
+          ))}
+        </div>
       </div>
-    </div>
+    </>
+
   )
 }
 
